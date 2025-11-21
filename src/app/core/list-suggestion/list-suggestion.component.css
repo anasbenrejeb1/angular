@@ -1,0 +1,131 @@
+/* ====== Container ====== */
+.suggestion-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* ====== Search bar ====== */
+.search-box {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 25px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* ====== Suggestion card ====== */
+.suggestion-card {
+  background: #ffffff;
+  padding: 18px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.suggestion-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* ====== Titles ====== */
+.suggestion-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  color: #333;
+}
+
+/* ====== Category & status tags ====== */
+.tag {
+  display: inline-block;
+  padding: 4px 9px;
+  margin-right: 7px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+}
+
+.tag.category {
+  background: #007bff;
+}
+
+.tag.acceptee {
+  background: #28a745;
+}
+
+.tag.refusee {
+  background: #dc3545;
+}
+
+.tag.en_attente {
+  background: #ffc107;
+  color: #000;
+}
+
+/* ====== Buttons ====== */
+.btn-group {
+  margin-top: 12px;
+}
+
+.btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-like {
+  background-color: #ff4081;
+  color: white;
+}
+
+.btn-like:hover {
+  background-color: #e73370;
+}
+
+.btn-fav {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-fav:hover {
+  background-color: #0056b3;
+}
+
+/* ====== Favorites ====== */
+.favorites-container {
+  margin-top: 35px;
+  padding: 20px;
+  border-radius: 8px;
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+}
+
+.favorites-container h4 {
+  margin-bottom: 10px;
+}
+
+/* ====== Favorite items ====== */
+.favorite-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.favorite-item:last-child {
+  border-bottom: none;
+}
+.page-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}

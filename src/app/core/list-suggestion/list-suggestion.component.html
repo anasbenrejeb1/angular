@@ -1,0 +1,81 @@
+<div class="suggestion-container">
+
+    <h2 class="page-title"> Liste des suggestions</h2>
+
+  <input
+    class="search-box"
+    type="text"
+    placeholder="Rechercher par titre ou catégorie..."
+    [(ngModel)]="searchTerm"
+  />
+
+  <div *ngIf="filteredSuggestions.length; else noResults">
+    <div
+      *ngFor="let s of filteredSuggestions"
+      class="suggestion-card"
+      role="article"
+      [attr.aria-labelledby]="'title-' + s.id"
+    >
+
+      <div class="card-header">
+        <h3 id="title-{{s.id}}">{{ s.title }}</h3>
+
+        <div>
+          <span class="tag category">{{ s.category }}</span>
+          <span class="tag"
+                [ngClass]="{
+                  'acceptee': s.status === 'acceptee',
+                  'refusee': s.status === 'refusee',
+                  'en_attente': s.status === 'en_attente'
+                }">
+            {{ s.status }}
+          </span>
+        </div>
+      </div>
+
+      <p style="margin-top:10px">{{ s.description }}</p>
+      <small>Publié le {{ s.date | date:'mediumDate' }}</small>
+
+      <div class="btn-group" *ngIf="s.status !== 'refusee'">
+        <button class="btn btn-like" (click)="incrementLike(s)">
+           Like ({{ s.likes || 0 }})
+        </button>
+
+        <!-- utilisation de la méthode isFavorite au lieu de la flèche dans le template -->
+        <button
+          class="btn btn-fav"
+          (click)="addToFavorites(s)"
+          [disabled]="isFavorite(s)"
+        >
+           Ajouter aux favoris
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <ng-template #noResults>
+    <div class="suggestion-card">
+      <h3>Aucune suggestion trouvée</h3>
+      <p>Essayez un autre mot-clé.</p>
+    </div>
+  </ng-template>
+
+  <div class="favorites-container" *ngIf="favorites.length > 0">
+    <h4>Favoris ({{ favorites.length }})</h4>
+
+    <div
+      *ngFor="let f of favorites"
+      class="favorite-item"
+      [attr.aria-label]="'Favori ' + f.title"
+      role="listitem"
+    >
+      <strong>{{ f.title }}</strong>
+      <div style="font-size:13px;color:#555;">
+        <span>{{ f.category }}</span> • <span>{{ f.date | date:'mediumDate' }}</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
