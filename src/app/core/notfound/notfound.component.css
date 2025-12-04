@@ -1,0 +1,25 @@
+.gif-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #000; /* Fond noir pour matcher le style glitch du GIF */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.gif-container img {
+  max-width: 100%;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
+  border-radius: 10px; /* Optionnel : coins arrondis pour un look plus soft */
+  box-shadow: 0 0 20px rgba(255, 20, 147, 0.5); /* Ombre rose pour l'ambiance cyber */
+}
+
+/* Responsive pour mobile : le GIF s'adapte sans déborder */
+@media (max-width: 768px) {
+  .gif-container img {
+    max-height: 80vh;
+  }
+}

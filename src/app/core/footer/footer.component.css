@@ -1,0 +1,32 @@
+.bg-esprit-dark {
+  background: linear-gradient(135deg, #001f3f 0%, #003366 100%) !important; /* Bleu foncé Esprit */
+  color: white;
+}
+
+.footer-link {
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+  opacity: 1 !important;
+  color: #0056b3 !important; /* Bleu clair sur hover */
+  transform: translateX(5px); /* Petit slide pour dynamisme */
+}
+
+.bi {
+  transition: transform 0.3s ease;
+}
+
+.bi:hover {
+  transform: scale(1.2);
+}
+
+footer hr {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive : Empile les sections sur mobile */
+@media (max-width: 768px) {
+  .footer-link { display: block; }
+  .d-flex.gap-3 { justify-content: center; }
+}

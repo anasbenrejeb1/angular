@@ -1,0 +1,31 @@
+<div class="suggestion-details-container" *ngIf="suggestion; else noSuggestion">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">{{ suggestion.title }}</h2>
+      <span class="tag category">{{ suggestion.category }}</span>
+      <span class="tag" [ngClass]="{
+        'acceptee': suggestion.status === 'acceptee',
+        'refusee': suggestion.status === 'refusee',
+        'en_attente': suggestion.status === 'en_attente'
+      }">
+        {{ suggestion.status }}
+      </span>
+    </div>
+    <div class="card-body">
+      <p>{{ suggestion.description }}</p>
+      <p><strong>Date :</strong> {{ suggestion.date | date:'mediumDate' }}</p>
+      <p><strong>Likes :</strong> {{ suggestion.likes || 0 }}</p>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-secondary" (click)="goBack()">Retour à la Liste</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #noSuggestion>
+  <div class="alert alert-warning text-center">
+    <h4>Suggestion non trouvée</h4>
+    <p>L'ID {{ id }} n'existe pas.</p>
+    <button class="btn btn-primary" (click)="goBack()">Retour à la Liste</button>
+  </div>
+</ng-template>

@@ -1,0 +1,18 @@
+.suggestion-details-container {
+  padding: 20px;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.tag {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+}
+
+.tag.acceptee { background-color: #d4edda; color: #155724; }
+.tag.refusee { background-color: #f8d7da; color: #721c24; }
+.tag.en_attente { background-color: #fff3cd; color: #856404; }

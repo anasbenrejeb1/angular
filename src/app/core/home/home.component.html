@@ -1,0 +1,105 @@
+<main class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-section bg-primary text-white py-5 mb-5">
+    <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Bienvenue sur Campus Idées</h1>
+      <p class="lead mb-4">Plateforme collaborative pour soumettre, voter et implémenter des suggestions innovantes à l'Esprit. Inspiré par nos workshops Angular !</p>
+      <div class="row justify-content-center mb-4">
+        <div class="col-md-8">
+           </div>
+      </div>
+      <a routerLink="/suggestions" class="btn btn-light btn-lg px-5 me-3">Découvrir les Suggestions</a>
+      <a routerLink="/users" class="btn btn-outline-light btn-lg px-5">Voir les Utilisateurs</a>
+    </div>
+  </section>
+
+  <!-- Stats Section (basée sur suggestions du n°2) -->
+  <section class="stats-section py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="h3 fw-bold mb-4">À Propos de Nos Idées</h2>
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="card h-100 border-0 shadow">
+            <div class="card-body">
+              <i class="bi bi-lightbulb-fill text-primary fs-1 mb-2"></i>
+              <h3>{{ totalSuggestions }}</h3>
+              <p class="text-muted">Suggestions Totales</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100 border-0 shadow">
+            <div class="card-body">
+              <i class="bi bi-check-circle-fill text-success fs-1 mb-2"></i>
+              <h3>{{ acceptedSuggestions }}</h3>
+              <p class="text-muted">Acceptées</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100 border-0 shadow">
+            <div class="card-body">
+              <i class="bi bi-clock-fill text-warning fs-1 mb-2"></i>
+              <h3>{{ pendingSuggestions }}</h3>
+              <p class="text-muted">En Attente</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100 border-0 shadow">
+            <div class="card-body">
+              <i class="bi bi-x-circle-fill text-danger fs-1 mb-2"></i>
+              <h3>{{ rejectedSuggestions }}</h3>
+              <p class="text-muted">Refusées</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section (objectifs des workshops) -->
+  <section class="features-section py-5">
+    <div class="container">
+      <h2 class="text-center h3 fw-bold mb-5">Fonctionnalités Clés</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <i class="bi bi-compass-fill text-primary fs-2 mb-3"></i>
+              <h5 class="card-title">Routage Simple & Lazy</h5>
+              <p class="card-text">Routes statiques et paramétrées avec ActivatedRoute et Router. Lazy loading pour performances optimales.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <i class="bi bi-link-45deg text-success fs-2 mb-3"></i>
+              <h5 class="card-title">Navigation Fluide</h5>
+              <p class="card-text">RouterLink et RouterOutlet pour une SPA sans rechargement. Redirection par défaut vers Home.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <i class="bi bi-gear-fill text-warning fs-2 mb-3"></i>
+              <h5 class="card-title">Data Binding Avancé</h5>
+              <p class="card-text">Interpolation, Property/Event Binding, NgFor/NgIf pour afficher et interagir avec les suggestions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section bg-primary text-white py-5 text-center">
+    <div class="container">
+      <h3 class="fw-bold mb-3">Prêt à Contribuer ?</h3>
+      <p class="lead mb-4">Soumettez votre idée dès aujourd'hui et votez pour les meilleures !</p>
+      <a routerLink="/suggestions" class="btn btn-light btn-lg px-5">Commencer</a>
+    </div>
+  </section>
+</main>
