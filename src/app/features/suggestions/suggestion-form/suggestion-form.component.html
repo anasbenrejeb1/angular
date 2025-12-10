@@ -1,0 +1,82 @@
+<div class="card p-4">
+  <form [formGroup]="suggestionForm" (ngSubmit)="onSubmit()">
+    
+    <!-- Titre -->
+    <div class="mb-3">
+      <label for="title">Titre :</label>
+      <input 
+        id="title" 
+        formControlName="title" 
+        type="text" 
+        class="form-control"
+        [class.is-invalid]="title?.invalid && title?.touched">
+      <!-- Messages d'erreur -->
+      <div *ngIf="title?.invalid && title?.touched" class="invalid-feedback">
+        <div *ngIf="title?.errors?.['required']">Le titre est obligatoire.</div>
+        <div *ngIf="title?.errors?.['minlength']">Le titre doit contenir au moins 5 caractères.</div>
+        <div *ngIf="title?.errors?.['pattern']">Le titre doit commencer par une majuscule et contenir seulement des lettres.</div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="description">Description :</label>
+      <textarea 
+        id="description" 
+        formControlName="description" 
+        class="form-control"
+        [class.is-invalid]="description?.invalid && description?.touched"></textarea>
+      <!-- Messages d'erreur -->
+      <div *ngIf="description?.invalid && description?.touched" class="invalid-feedback">
+        <div *ngIf="description?.errors?.['required']">La description est obligatoire.</div>
+        <div *ngIf="description?.errors?.['minlength']">La description doit contenir au moins 30 caractères.</div>
+      </div>
+    </div>
+
+    <!-- Catégorie -->
+    <div class="mb-3">
+      <label for="category">Catégorie :</label>
+      <select 
+        id="category" 
+        formControlName="category" 
+        class="form-select"
+        [class.is-invalid]="category?.invalid && category?.touched">
+        <option value="">-- Sélectionnez une catégorie --</option>
+        <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+      </select>
+      <!-- Message d'erreur -->
+      <div *ngIf="category?.invalid && category?.touched" class="invalid-feedback">
+        <div *ngIf="category?.errors?.['required']">La catégorie est obligatoire.</div>
+      </div>
+    </div>
+
+    <!-- Date (readonly) -->
+    <div class="mb-3">
+      <label for="date">Date :</label>
+      <input 
+        id="date" 
+        formControlName="date" 
+        type="date"  
+        class="form-control" 
+        readonly>
+    </div>
+
+    <!-- Status (readonly) -->
+    <div class="mb-3">
+      <label for="status">Status :</label>
+      <input 
+        id="status" 
+        formControlName="status" 
+        type="text" 
+        class="form-control" 
+        readonly>
+    </div>
+
+    <button 
+      type="submit" 
+      class="btn btn-primary" 
+      [disabled]="suggestionForm.invalid">
+      Soumettre
+    </button>
+  </form>
+</div>

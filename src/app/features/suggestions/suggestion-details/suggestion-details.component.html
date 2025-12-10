@@ -1,31 +1,27 @@
-<div class="suggestion-details-container" *ngIf="suggestion; else noSuggestion">
-  <div class="card">
-    <div class="card-header">
-      <h2 class="card-title">{{ suggestion.title }}</h2>
-      <span class="tag category">{{ suggestion.category }}</span>
-      <span class="tag" [ngClass]="{
-        'acceptee': suggestion.status === 'acceptee',
-        'refusee': suggestion.status === 'refusee',
-        'en_attente': suggestion.status === 'en_attente'
-      }">
-        {{ suggestion.status }}
-      </span>
-    </div>
-    <div class="card-body">
-      <p>{{ suggestion.description }}</p>
-      <p><strong>Date :</strong> {{ suggestion.date | date:'mediumDate' }}</p>
-      <p><strong>Likes :</strong> {{ suggestion.likes || 0 }}</p>
-    </div>
-    <div class="card-footer">
-      <button class="btn btn-secondary" (click)="goBack()">Retour à la Liste</button>
-    </div>
-  </div>
-</div>
+<div class="container mt-4">
+  <button class="btn btn-secondary mb-3" (click)="goBack()">← Retour à la liste</button>  <!-- Always visible back button -->
 
-<ng-template #noSuggestion>
-  <div class="alert alert-warning text-center">
-    <h4>Suggestion non trouvée</h4>
-    <p>L'ID {{ id }} n'existe pas.</p>
-    <button class="btn btn-primary" (click)="goBack()">Retour à la Liste</button>
+  <div *ngIf="suggestion; else notFound">
+    <h2>Détails de la Suggestion</h2>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ suggestion.title }}</h5>
+        <p class="card-text">{{ suggestion.description }}</p>
+        <small class="text-muted">
+          Catégorie: {{ suggestion.category }} | 
+          Date: {{ suggestion.date | date:'short' }} | 
+          Status: {{ suggestion.status }} | 
+          Likes: {{ suggestion.likes }}
+        </small>
+         </div>
+    </div>
   </div>
-</ng-template>
+
+  <ng-template #notFound>
+    <div class="alert alert-warning">
+      <h4>Suggestion non trouvée pour ID {{ id }}.</h4>
+      <p>Vérifiez l'ID ou retournez à la liste.</p>
+      <button class="btn btn-secondary" (click)="goBack()">Retour à la liste</button>
+    </div>
+  </ng-template>
+</div>

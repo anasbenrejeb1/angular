@@ -1,6 +1,5 @@
 <div class="suggestion-container">
-
-    <h2 class="page-title"> Liste des suggestions</h2>
+  <h2 class="page-title">Liste des suggestions</h2>
 
   <input
     class="search-box"
@@ -16,7 +15,6 @@
       role="article"
       [attr.aria-labelledby]="'title-' + s.id"
     >
-
       <div class="card-header">
         <h3 id="title-{{s.id}}">{{ s.title }}</h3>
 
@@ -38,22 +36,20 @@
 
       <div class="btn-group" *ngIf="s.status !== 'refusee'">
         <button class="btn btn-like" (click)="incrementLike(s)">
-           Like ({{ s.likes || 0 }})
+          Like ({{ s.likes || 0 }})
         </button>
 
-        <!-- utilisation de la méthode isFavorite au lieu de la flèche dans le template -->
         <button
           class="btn btn-fav"
           (click)="addToFavorites(s)"
           [disabled]="isFavorite(s)"
         >
-           Ajouter aux favoris
+          Ajouter aux favoris
         </button>
 
-        <!-- Bouton Détails ajouté (Workshop n°3 : route paramétrée /suggestions/:id) -->
-        <button class="btn btn-info" [routerLink]="[s.id]">Détails</button>
+        <!-- Fixed: No nested card; direct <a> for details -->
+        <a routerLink="/suggestions/{{ s.id }}" class="btn btn-info btn-sm">Voir détails</a>
       </div>
-
     </div>
   </div>
 
@@ -78,7 +74,5 @@
         <span>{{ f.category }}</span> • <span>{{ f.date | date:'mediumDate' }}</span>
       </div>
     </div>
-
   </div>
-
 </div>
