@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';  // Add OnInit
-import { SuggestionService } from '../suggestion.service';  // Import service
+//import { SuggestionService } from '../suggestion.service';  // Import service
 import { Suggestion } from '../../../models/suggestion';
 import { Router } from '@angular/router';  // For navigation if needed
+import { SuggestionService } from '../../../core/services/suggestion.service';  // Ajustez le chemin relatif (depuis features/suggestions vers core/services)
 
 @Component({
   selector: 'app-list-suggestion',
@@ -15,10 +16,9 @@ export class ListSuggestionComponent implements OnInit {  // Implement OnInit
 
   constructor(private suggestionService: SuggestionService) {}  // Inject service
 
-  ngOnInit(): void {
-    this.suggestions = this.suggestionService.getSuggestions();  // Load from service
-  }
-
+ngOnInit(): void {
+  this.suggestions = this.suggestionService.getSuggestionList();  // Remplace l'ancienne liste statique
+}
   incrementLike(s: Suggestion) {
     s.likes = (s.likes || 0) + 1;
   }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';  // Pour *ngIf, etc. dans template
-import { SuggestionService } from '../suggestion.service';  // Ajuste chemin si besoin
+//import { SuggestionService } from '../suggestion.service';  // Ajuste chemin si besoin
 import { Suggestion } from '../../../models/suggestion';
-
+import { SuggestionService } from '../../../core/services/suggestion.service';
 @Component({
   selector: 'app-suggestion-details',
   standalone: true,  // Si Angular 17+ ; enlève si module-based
@@ -16,23 +16,20 @@ export class SuggestionDetailsComponent implements OnInit {
   id: number | undefined;
   notFound: boolean = false;  // Pour gérer 404 dans le template
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private suggestionService: SuggestionService  // Injection du service pour données dynamiques
-  ) {}
+constructor(
+  private route: ActivatedRoute,
+  private router: Router,
+  private suggestionService: SuggestionService
+) {}
 
-  ngOnInit(): void {
-    this.id = +this.route.snapshot.paramMap.get('id')!;  // Récupère :id de l'URL et convertit en number
-    if (this.id) {
-      this.suggestion = this.suggestionService.getSuggestions().find(s => s.id === this.id);  // Cherche dans le service (dynamique !)
-      if (!this.suggestion) {
-        this.notFound = true;  // Marque comme non trouvée
-        // Optionnel : Redirige auto vers liste
-        // this.router.navigate(['/suggestions']);
-      }
-    }
+ ngOnInit(): void {
+  const id = this.route.snapshot.params['id'];  // Récupère l'ID de l'URL (ex. /suggestions/1)
+  const allSuggestions = this.suggestionService.getSuggestionList();
+  this.suggestion = allSuggestions.find(s => s.id === +id);  // Filtrage par ID (+id convertit string en number)
+  if (!this.suggestion) {
+    this.router.navigate(['/suggestions']);  // Redirige si non trouvé
   }
+}
 
   goBack(): void {
     this.router.navigate(['/suggestions']);

@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   pendingSuggestions: number = 0;
   rejectedSuggestions: number = 0;
 
-  // Liste statique du n°2 (copie pour stats)
+  // Liste statique du n°2 
   private suggestions: Suggestion[] = [
     { id: 1, title: 'Organiser une journée team building', description: '...', category: 'Événements', date: new Date('2025-01-20'), status: 'acceptee' },
     { id: 2, title: 'Améliorer le système de réservation', description: '...', category: 'Technologie', date: new Date('2025-01-15'), status: 'refusee' },
